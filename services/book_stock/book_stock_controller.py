@@ -1,7 +1,6 @@
 from flask import Flask, request
 from services.book_stock import book_stock_service
 from flask_api import status as response_status
-
 from services.book_stock.book_stock_model import BookStockModel
 
 app = Flask(__name__)

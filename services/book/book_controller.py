@@ -1,9 +1,7 @@
 from datetime import datetime
-
 from flask import Flask, request
 from flask_expects_json import expects_json
 from flask_api import status as response_status
-
 from services.book.book_model import BookModel
 from services.book import book_service
 
@@ -59,7 +57,6 @@ def update_book(book_id):
         return {'status': 'Error',
                 'message': 'Token is not found or token timed out. Login again'}, response_status.HTTP_404_NOT_FOUND
     update_book_data = request.get_json(force=True)
-    print(update_book_data)
     book_name = update_book_data.get('book_name')
     isbn = update_book_data.get('isbn')
     author = update_book_data.get('author')

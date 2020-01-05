@@ -1,9 +1,6 @@
-import json
 import logging
-import jsonify
 import requests
 from bson.objectid import ObjectId
-
 import utils
 from services.user.user_controller import app
 

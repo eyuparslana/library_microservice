@@ -1,0 +1,83 @@
+version: '3.3'
+
+services:
+  mongodb:
+    image: mongo:4.0.8
+    container_name: mongodb
+    restart: unless-stopped
+    command: mongod --auth
+    environment:
+      MONGO_INITDB_DATABASE: librarydb
+      MONGODB_DATA_DIR: /data/db
+      MONDODB_LOG_DIR: /dev/null
+
+  author:
+    build:
+      context: services/author
+      dockerfile: Dockerfile
+    container_name: author
+    restart: unless-stopped
+    environment:
+      APP_ENV: "prod"
+      APP_DEBUG: "False"
+      APP_PORT: 5002
+      MONGODB_DATABASE: librarydb
+  book:
+    build:
+      context: services/book
+      dockerfile: Dockerfile
+    container_name: book
+    restart: unless-stopped
+    environment:
+      APP_ENV: "prod"
+      APP_DEBUG: "False"
+      APP_PORT: 5003
+      MONGODB_DATABASE: librarydb
+
+  book_stock:
+    build:
+      context: services/book_stock
+      dockerfile: Dockerfile
+    container_name: book_stock
+    restart: unless-stopped
+    environment:
+      APP_ENV: "prod"
+      APP_DEBUG: "False"
+      APP_PORT: 5005
+      MONGODB_DATABASE: librarydb
+
+  loan:
+    build:
+      context: services/loan
+      dockerfile: Dockerfile
+    container_name: loan
+    restart: unless-stopped
+    environment:
+      APP_ENV: "prod"
+      APP_DEBUG: "False"
+      APP_PORT: 5004
+      MONGODB_DATABASE: librarydb
+
+  token:
+    build:
+      context: services/token
+      dockerfile: Dockerfile
+    container_name: token
+    restart: unless-stopped
+    environment:
+      APP_ENV: "prod"
+      APP_DEBUG: "False"
+      APP_PORT: 5001
+      MONGODB_DATABASE: librarydb
+
+  user:
+    build:
+      context: services/user
+      dockerfile: Dockerfile
+    container_name: user
+    restart: unless-stopped
+    environment:
+      APP_ENV: "prod"
+      APP_DEBUG: "False"
+      APP_PORT: 5000
+      MONGODB_DATABASE: librarydb

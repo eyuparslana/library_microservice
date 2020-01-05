@@ -1,12 +1,8 @@
 from datetime import datetime
-
-import requests
 from flask import Flask
-from flask_pymongo import PyMongo
 from flask import request
 from flask_expects_json import expects_json
 from flask_api import status as response_status
-
 import utils
 from services.author.author_model import AuthorModel
 from services.author import author_service
@@ -112,7 +108,6 @@ def get_all_author():
     if not is_exist:
         status = response_status.HTTP_404_NOT_FOUND
     return message, status
-
 
 
 if __name__ == '__main__':

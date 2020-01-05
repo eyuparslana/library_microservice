@@ -2,9 +2,7 @@ from datetime import datetime
 
 import bson
 from flask_pymongo import PyMongo
-from services.user.user_model import UserModel
 import json
-from bson import ObjectId
 
 
 PASS_SALT = b'$2b$12$p3xjIA41VrzJaSzkEmuoO.'
@@ -17,6 +15,7 @@ TOKEN_SERVICE_URL = "http://localhost:5001"
 AUTHOR_SERVICE_URL = "http://localhost:5002"
 BOOK_SERVICE_URL = "http://localhost:5003"
 BOOK_STOCK_SERVICE_URL = "http://localhost:5005"
+
 
 def serialize(x):
     if isinstance(x, datetime):

@@ -1,6 +1,4 @@
 import requests
-from bson import ObjectId
-
 import utils
 from services.book_stock.book_stock_controller import app
 from flask_api import status as response_status

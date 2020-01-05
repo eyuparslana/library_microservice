@@ -1,13 +1,13 @@
 import logging
 from datetime import datetime
-
 import jwt
 from pymongo.errors import OperationFailure
-
 import utils
 from services.token.token_controller import app
 
+
 app, mongo = utils.config(app)
+
 try:
     mongo.tokens.ensure_index('update_time', expireAfterSeconds=24 * 3600)
 except OperationFailure:
@@ -29,7 +29,6 @@ def add_token(token_obj):
         return token_obj
     token_obj = generate_token(token_obj)
     token_obj.update_time = datetime.now().utcnow()
-    print(token_obj.token)
     _id = mongo.tokens.insert(token_obj.__dict__)
     logging.debug("Token Created: ", token_obj.token)
     logging.debug("Token ID: ", _id)

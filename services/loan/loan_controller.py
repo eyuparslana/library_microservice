@@ -17,6 +17,7 @@ schema = {
 
 
 @app.route('/loan', methods=['POST'])
+@expects_json(schema)
 def create_loan():
     token = request.headers.get('auth_token')
     token_is_exist = loan_service.token_check(token)
@@ -35,6 +36,7 @@ def create_loan():
 
 
 @app.route('/loan/<loan_id>', methods=['PUT'])
+@expects_json(schema)
 def update_loan(loan_id):
     token = request.headers.get('auth_token')
     token_is_exist = loan_service.token_check(token)

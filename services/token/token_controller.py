@@ -1,12 +1,9 @@
 from flask_api import status as response_status
 from flask import request, Flask
-from bson.objectid import ObjectId
-
 from services.token.token_model import Token
+from services.token import token_service
 
 app = Flask(__name__)
-
-from services.token import token_service
 
 
 @app.route('/add_token', methods=['GET'])

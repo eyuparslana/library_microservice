@@ -1,7 +1,6 @@
 import requests
 from bson import ObjectId
 from flask_api import status as response_status
-
 import utils
 from services.book.book_controller import app
 
